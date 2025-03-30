@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # Required for `actions/checkout`
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        # `npm install -g corepack@latest` is necessary as there is otherwise an
+        # error Error: Cannot find matching keyid:
+        # {"signatures":[{"sig":"..."}...]...}
+        #
+        # @see {@link https://vercel.com/guides/corepack-errors-github-actions}
+        # @see {@link https://github.com/nodejs/corepack/issues/612}
+        run: |
+          npm install -g corepack@latest
+          corepack enable
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint code with ESLint
+        run: pnpm run lint
+
+      - name: Check code formatting with Prettier
+        run: pnpm run format:check
+
+      - name: Check types with TypeScript compiler
+        run: pnpm run check-types
+
+      - name: Build
+        run: pnpm run build
