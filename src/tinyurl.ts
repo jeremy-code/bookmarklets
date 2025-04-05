@@ -1,8 +1,8 @@
 /**
- * Makes a TinyURL link from the current page with a custom alias based on a
- * slug of the current page's title.
+ * Opens in a new tab a TinyURL creation link of the current page with a custom
+ * alias based on a "slug" of the current page's title.
  */
-location.assign(
+window.open(
   `https://tinyurl.com/create.php?${new URLSearchParams({
     url: location.href,
     alias: `${document.title
@@ -15,4 +15,5 @@ location.assign(
       .toFixed()
       .padStart(6, "0")}`,
   })}`,
+  "_blank",
 );

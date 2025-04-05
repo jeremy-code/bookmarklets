@@ -38,10 +38,27 @@ The bookmarklets are built using [`tsup`](https://tsup.egoist.dev/) and [esbuild
 Outputs are committed to the repository, so you can use them without building the project yourself by just adding the code to your bookmarks.
 
 1. archive ([source code](src/archive.ts), [bookmarklet](bookmarklets/archive.global.js)) - Archive the current page using [archive.today](https://archive.today/)
-2. reddit ([source code](src/reddit.ts), [bookmarklet](bookmarklets/reddit.global.js)) - Opens a Reddit image or video directly
-3. respimagelint ([source code](src/respimagelint.ts), [bookmarklet](bookmarklets/respimagelint.global.js)) - Lint responsive images on the current page using Martin Auswöger’s [RespImageLint](https://ausi.github.io/respimagelint/) script (see [ausi/respimagelint](https://github.com/ausi/respimagelint))
-4. tinyurl ([source code](src/tinyurl.ts), [bookmarklet](bookmarklets/tinyurl.global.js)) - Shorten the current page URL using [tinyurl.com](https://tinyurl.com/) with a slug-like alias
-5. whois ([source code](src/whois.ts), [bookmarklet](bookmarklets/whois.global.js)) - Get the WHOIS information for the current page using [lookup.icann.org](https://lookup.icann.org)
+1. edit ([source code](src/edit.ts), [bookmarklet](bookmarklets/edit.global.js)) - Enable [`designMode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/designMode) and make the body element [contentEditable](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/contentEditable)
+1. reddit ([source code](src/reddit.ts), [bookmarklet](bookmarklets/reddit.global.js)) - Opens a Reddit image or video directly
+1. respimagelint ([source code](src/respimagelint.ts), [bookmarklet](bookmarklets/respimagelint.global.js)) - Lint responsive images on the current page using Martin Auswöger’s [RespImageLint](https://ausi.github.io/respimagelint/) script (see [ausi/respimagelint](https://github.com/ausi/respimagelint))
+1. tinyurl ([source code](src/tinyurl.ts), [bookmarklet](bookmarklets/tinyurl.global.js)) - Shorten the current page URL using [tinyurl.com](https://tinyurl.com/) with a slug-like alias
+1. whois ([source code](src/whois.ts), [bookmarklet](bookmarklets/whois.global.js)) - Get the WHOIS information for the current page using [lookup.icann.org](https://lookup.icann.org)
+
+---
+
+Some additional bookmarks that are not bookmarklets but are useful:
+
+Notepad
+
+```
+data:text/html,<html contenteditable><title>Notepad</title></html>
+```
+
+Color Picker
+
+```
+data:text/html,<html><title>Color Picker</title><input type="color"></html>
+```
 
 ## License
 
